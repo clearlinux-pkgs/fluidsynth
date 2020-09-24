@@ -4,7 +4,7 @@
 #
 Name     : fluidsynth
 Version  : 2.0.5
-Release  : 1
+Release  : 2
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.0.5.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.0.5.tar.gz
 Summary  : A real-time software synthesizer based on the SoundFont 2 specifications
