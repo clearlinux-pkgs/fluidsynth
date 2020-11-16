@@ -61,6 +61,7 @@ libfluidsynth.so.2:fluid_event_unregistering
 libfluidsynth.so.2:fluid_event_volume
 libfluidsynth.so.2:fluid_file_renderer_process_block
 libfluidsynth.so.2:fluid_file_set_encoding_quality
+libfluidsynth.so.2:fluid_free
 libfluidsynth.so.2:fluid_get_stdin
 libfluidsynth.so.2:fluid_get_stdout
 libfluidsynth.so.2:fluid_get_sysconf
