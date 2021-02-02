@@ -1,6 +1,5 @@
-2.1.5
+2.1.7
 doxygen
-ncurses-dev
 pkgconfig(alsa)
 pkgconfig(libpulse-simple)
 pkgconfig(readline)
