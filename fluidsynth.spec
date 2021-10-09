@@ -4,13 +4,14 @@
 #
 Name     : fluidsynth
 Version  : 2.2.3
-Release  : 9
+Release  : 10
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
 Requires: fluidsynth-bin = %{version}-%{release}
+Requires: fluidsynth-filemap = %{version}-%{release}
 Requires: fluidsynth-lib = %{version}-%{release}
 Requires: fluidsynth-license = %{version}-%{release}
 Requires: fluidsynth-man = %{version}-%{release}
@@ -37,6 +38,7 @@ can also play MIDI files.
 Summary: bin components for the fluidsynth package.
 Group: Binaries
 Requires: fluidsynth-license = %{version}-%{release}
+Requires: fluidsynth-filemap = %{version}-%{release}
 
 %description bin
 bin components for the fluidsynth package.
@@ -54,10 +56,19 @@ Requires: fluidsynth = %{version}-%{release}
 dev components for the fluidsynth package.
 
 
+%package filemap
+Summary: filemap components for the fluidsynth package.
+Group: Default
+
+%description filemap
+filemap components for the fluidsynth package.
+
+
 %package lib
 Summary: lib components for the fluidsynth package.
 Group: Libraries
 Requires: fluidsynth-license = %{version}-%{release}
+Requires: fluidsynth-filemap = %{version}-%{release}
 
 %description lib
 lib components for the fluidsynth package.
@@ -88,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1631474311
+export SOURCE_DATE_EPOCH=1633748993
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -102,25 +113,26 @@ popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -O3 -fno-lto -march=haswell "
-export FCFLAGS="$FFLAGS -O3 -fno-lto -march=haswell "
-export FFLAGS="$FFLAGS -O3 -fno-lto -march=haswell "
-export CXXFLAGS="$CXXFLAGS -O3 -fno-lto -march=haswell "
-export CFLAGS="$CFLAGS -march=haswell -m64"
-export CXXFLAGS="$CXXFLAGS -march=haswell -m64"
-export FFLAGS="$FFLAGS -march=haswell -m64"
-export FCFLAGS="$FCFLAGS -march=haswell -m64"
+export CFLAGS="$CFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export FCFLAGS="$FFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export FFLAGS="$FFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export CXXFLAGS="$CXXFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1631474311
+export SOURCE_DATE_EPOCH=1633748993
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-2.2.3/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923
 pushd clr-build-avx2
-%make_install_avx2  || :
+%make_install_v3  || :
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 pushd clr-build
 %make_install
@@ -132,7 +144,7 @@ popd
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/fluidsynth
-/usr/bin/haswell/fluidsynth
+/usr/share/clear/optimized-elf/bin*
 
 %files dev
 %defattr(-,root,root,-)
@@ -154,16 +166,18 @@ popd
 /usr/include/fluidsynth/types.h
 /usr/include/fluidsynth/version.h
 /usr/include/fluidsynth/voice.h
-/usr/lib64/haswell/libfluidsynth.so
 /usr/lib64/libfluidsynth.so
 /usr/lib64/pkgconfig/fluidsynth.pc
 
+%files filemap
+%defattr(-,root,root,-)
+/usr/share/clear/filemap/filemap-fluidsynth
+
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/haswell/libfluidsynth.so.3
-/usr/lib64/haswell/libfluidsynth.so.3.0.3
 /usr/lib64/libfluidsynth.so.3
 /usr/lib64/libfluidsynth.so.3.0.3
+/usr/share/clear/optimized-elf/lib*
 
 %files license
 %defattr(0644,root,root,0755)
