@@ -4,7 +4,7 @@
 #
 Name     : fluidsynth
 Version  : 2.2.3
-Release  : 10
+Release  : 11
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
