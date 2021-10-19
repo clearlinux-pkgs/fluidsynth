@@ -4,7 +4,7 @@
 #
 Name     : fluidsynth
 Version  : 2.2.3
-Release  : 11
+Release  : 12
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.2.3/fluidsynth-2.2.3.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
@@ -99,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1633748993
+export SOURCE_DATE_EPOCH=1634686954
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -113,30 +113,30 @@ popd
 mkdir -p clr-build-avx2
 pushd clr-build-avx2
 export GCC_IGNORE_WERROR=1
-export CFLAGS="$CFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
-export FCFLAGS="$FFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
-export FFLAGS="$FFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
-export CXXFLAGS="$CXXFLAGS -O3 -fno-lto -march=x86-64-v3 -mtune=skylake "
-export CFLAGS="$CFLAGS -march=x86-64-v3 -m64"
-export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64"
-export FFLAGS="$FFLAGS -march=x86-64-v3 -m64"
-export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64"
+export CFLAGS="$CFLAGS -O3 -Wl,-z,x86-64-v3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export FCFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export FFLAGS="$FFLAGS -O3 -Wl,-z,x86-64-v3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export CXXFLAGS="$CXXFLAGS -O3 -Wl,-z,x86-64-v3 -fno-lto -march=x86-64-v3 -mtune=skylake "
+export CFLAGS="$CFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export CXXFLAGS="$CXXFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FFLAGS="$FFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
+export FCFLAGS="$FCFLAGS -march=x86-64-v3 -m64 -Wl,-z,x86-64-v3"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1633748993
+export SOURCE_DATE_EPOCH=1634686954
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-2.2.3/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923
 pushd clr-build-avx2
 %make_install_v3  || :
-/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 popd
 pushd clr-build
 %make_install
 popd
+/usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot}/usr/share/clear/optimized-elf/ %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
