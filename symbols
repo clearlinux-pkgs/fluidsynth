@@ -29,6 +29,7 @@ libfluidsynth.so.3:fluid_event_bank_select
 libfluidsynth.so.3:fluid_event_channel_pressure
 libfluidsynth.so.3:fluid_event_chorus_send
 libfluidsynth.so.3:fluid_event_control_change
+libfluidsynth.so.3:fluid_event_from_midi_event
 libfluidsynth.so.3:fluid_event_get_bank
 libfluidsynth.so.3:fluid_event_get_channel
 libfluidsynth.so.3:fluid_event_get_control
