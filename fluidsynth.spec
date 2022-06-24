@@ -4,7 +4,7 @@
 #
 Name     : fluidsynth
 Version  : 2.2.7
-Release  : 18
+Release  : 19
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.2.7/fluidsynth-2.2.7.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.2.7/fluidsynth-2.2.7.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
@@ -99,7 +99,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1656028310
+export SOURCE_DATE_EPOCH=1656110461
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -140,7 +140,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1656028310
+export SOURCE_DATE_EPOCH=1656110461
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-2.2.7/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923
