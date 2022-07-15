@@ -7,6 +7,7 @@ libglib-2.0.so.0
 libgomp.so.1
 libm.so.6
 libpulse-simple.so.0
+libpulse.so.0
 libreadline.so.8
 libsndfile.so.1
 libstdc++.so.6
