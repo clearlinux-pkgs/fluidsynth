@@ -5,7 +5,7 @@
 #
 Name     : fluidsynth
 Version  : 2.3.0
-Release  : 30
+Release  : 31
 URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.3.0/fluidsynth-2.3.0.tar.gz
 Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.3.0/fluidsynth-2.3.0.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
@@ -90,7 +90,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682964345
+export SOURCE_DATE_EPOCH=1685503555
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -131,7 +131,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1682964345
+export SOURCE_DATE_EPOCH=1685503555
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923 || :
@@ -158,8 +158,6 @@ popd
 
 %files dev
 %defattr(-,root,root,-)
-/V3/usr/lib64/libfluidsynth.so
-/V4/usr/lib64/libfluidsynth.so
 /usr/include/fluidsynth.h
 /usr/include/fluidsynth/audio.h
 /usr/include/fluidsynth/event.h
@@ -187,9 +185,7 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libfluidsynth.so.3
 /V3/usr/lib64/libfluidsynth.so.3.1.3
-/V4/usr/lib64/libfluidsynth.so.3
 /V4/usr/lib64/libfluidsynth.so.3.1.3
 /usr/lib64/libfluidsynth.so.3
 /usr/lib64/libfluidsynth.so.3.1.3
