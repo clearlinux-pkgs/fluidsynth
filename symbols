@@ -141,6 +141,7 @@ libfluidsynth.so.3:fluid_player_add
 libfluidsynth.so.3:fluid_player_add_mem
 libfluidsynth.so.3:fluid_player_get_bpm
 libfluidsynth.so.3:fluid_player_get_current_tick
+libfluidsynth.so.3:fluid_player_get_division
 libfluidsynth.so.3:fluid_player_get_midi_tempo
 libfluidsynth.so.3:fluid_player_get_status
 libfluidsynth.so.3:fluid_player_get_total_ticks

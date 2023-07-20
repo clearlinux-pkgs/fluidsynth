@@ -1,8 +1,5 @@
-2.3.0
+2.3.3
+alsa-lib-dev
 doxygen
 libxslt-bin
-pkgconfig(alsa)
-pkgconfig(libpulse-simple)
-pkgconfig(sdl2)
-pkgconfig(sndfile)
-readline-dev
+pulseaudio-dev
