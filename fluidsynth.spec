@@ -4,10 +4,10 @@
 # Using build pattern: cmake
 #
 Name     : fluidsynth
-Version  : 2.3.3
-Release  : 33
-URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.3.3/fluidsynth-2.3.3.tar.gz
-Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.3.3/fluidsynth-2.3.3.tar.gz
+Version  : 2.3.4
+Release  : 34
+URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.3.4/fluidsynth-2.3.4.tar.gz
+Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.3.4/fluidsynth-2.3.4.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
@@ -102,15 +102,15 @@ man components for the fluidsynth package.
 
 
 %prep
-%setup -q -n fluidsynth-2.3.3
-cd %{_builddir}/fluidsynth-2.3.3
+%setup -q -n fluidsynth-2.3.4
+cd %{_builddir}/fluidsynth-2.3.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1689812438
+export SOURCE_DATE_EPOCH=1695761842
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -151,7 +151,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1689812438
+export SOURCE_DATE_EPOCH=1695761842
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923 || :
@@ -205,10 +205,10 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libfluidsynth.so.3.2.1
-/V4/usr/lib64/libfluidsynth.so.3.2.1
+/V3/usr/lib64/libfluidsynth.so.3.2.2
+/V4/usr/lib64/libfluidsynth.so.3.2.2
 /usr/lib64/libfluidsynth.so.3
-/usr/lib64/libfluidsynth.so.3.2.1
+/usr/lib64/libfluidsynth.so.3.2.2
 
 %files license
 %defattr(0644,root,root,0755)
