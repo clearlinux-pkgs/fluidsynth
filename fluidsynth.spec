@@ -6,10 +6,10 @@
 # autospec commit: 94c6be0
 #
 Name     : fluidsynth
-Version  : 2.4.2
-Release  : 39
-URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.4.2/fluidsynth-2.4.2.tar.gz
-Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.4.2/fluidsynth-2.4.2.tar.gz
+Version  : 2.4.3
+Release  : 40
+URL      : https://github.com/FluidSynth/fluidsynth/archive/v2.4.3/fluidsynth-2.4.3.tar.gz
+Source0  : https://github.com/FluidSynth/fluidsynth/archive/v2.4.3/fluidsynth-2.4.3.tar.gz
 Summary  : A Real-Time Software Synthesizer That Uses Soundfont(tm)
 Group    : Development/Tools
 License  : LGPL-2.1 LGPL-2.1+
@@ -105,13 +105,13 @@ man components for the fluidsynth package.
 
 
 %prep
-%setup -q -n fluidsynth-2.4.2
-cd %{_builddir}/fluidsynth-2.4.2
+%setup -q -n fluidsynth-2.4.3
+cd %{_builddir}/fluidsynth-2.4.3
 pushd ..
-cp -a fluidsynth-2.4.2 buildavx2
+cp -a fluidsynth-2.4.3 buildavx2
 popd
 pushd ..
-cp -a fluidsynth-2.4.2 buildavx512
+cp -a fluidsynth-2.4.3 buildavx512
 popd
 
 %build
@@ -119,7 +119,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1737746214
+export SOURCE_DATE_EPOCH=1737996883
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -196,7 +196,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1737746214
+export SOURCE_DATE_EPOCH=1737996883
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/fluidsynth
 cp %{_builddir}/fluidsynth-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/fluidsynth/731a8eff333b8f7053ab2220511b524c87a75923 || :
@@ -258,10 +258,10 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/V3/usr/lib64/libfluidsynth.so.3.3.2
-/V4/usr/lib64/libfluidsynth.so.3.3.2
+/V3/usr/lib64/libfluidsynth.so.3.3.3
+/V4/usr/lib64/libfluidsynth.so.3.3.3
 /usr/lib64/libfluidsynth.so.3
-/usr/lib64/libfluidsynth.so.3.3.2
+/usr/lib64/libfluidsynth.so.3.3.3
 
 %files license
 %defattr(0644,root,root,0755)
